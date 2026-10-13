@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  VOCCATIO TECH — SITE INSTITUCIONAL
+  ============================================================
+  ESTRUTURA DESTE ARQUIVO (somente marcação / conteúdo):
+    1. Cabeçalho + navegação
+    2. Hero (proposta de valor)
+    3. Faixa de disciplinas (marquee)
+    4. Quem somos
+    5. Núcleo estratégico
+    6. Plano diretor executivo
+    7. Ecossistema verticalmente integrado
+    8. Governança (diferencial)
+    9. Método (do conceito à escala)
+   10. Contato (formulário, canais, horário, localização, redes)
+   11. Rodapé (com botão de login para a área interna)
+
+  ONDE EDITAR DADOS REAIS (telefone, e-mail, horário, endereço,
+  redes sociais, link do login): objeto SITE_CONFIG em script.js.
+
+  CONVENÇÕES DE COMENTÁRIOS:
+     IMAGEM: ...   -> local onde inserir uma imagem
+     ÍCONE:  ...   -> local onde inserir um ícone
+  ============================================================
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <!-- SEGURANÇA: Content-Security-Policy. Bloqueia scripts/estilos inline e qualquer
+       origem não listada. O ideal é também enviá-la como cabeçalho HTTP (ver _headers,
+       .htaccess ou nginx-security.conf), onde frame-ancestors também funciona. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formspree.io; frame-src https://www.google.com; form-action https://formspree.io; base-uri 'none'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voccatio Tech | Arquitetura estratégica e estruturação de novos negócios</title>
+  <meta name="description" content="A Voccatio é o elo de governança entre a visão do empreendedor e a execução operacional lucrativa: auditamos, desenhamos e validamos modelos de negócio e estruturamos novas unidades.">
+  <meta name="theme-color" content="#1B3A63">
+
+  <!-- ÍCONE: favicon do site (ex.: <link rel="icon" href="assets/favicon.png">) -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" referrerpolicy="no-referrer">
+  <!-- Ícones: Google Material Symbols (https://fonts.google.com/icons) -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block" rel="stylesheet" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+  <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
+
+  <!-- ==================== 1. CABEÇALHO ==================== -->
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+
+      <a class="brand" href="#inicio" aria-label="Voccatio Tech — ir para o início">
+        <!-- IMAGEM: logotipo da Voccatio Tech (versão horizontal ou símbolo "V") -->
+        <img class="logo_top" src="assets/img/logo_800_150.png" alt="Voccatio Tech" width="800" height="150">
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" data-nav-toggle>
+        <span class="nav-toggle__label">Menu</span>
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="main-nav" id="menu-principal" aria-label="Navegação principal" data-nav>
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="#inicio">Início</a></li>
+          <li><a class="main-nav__link" href="#quem-somos">Quem somos</a></li>
+          <li><a class="main-nav__link" href="#nucleo">Núcleo estratégico</a></li>
+          <li><a class="main-nav__link" href="#ecossistema">Ecossistema</a></li>
+          <li><a class="main-nav__link" href="#metodo">Método</a></li>
+          <li><a class="main-nav__link" href="#contato">Contato</a></li>
+        </ul>
+        <a class="btn btn--light main-nav__cta" href="#contato">Falar com a Voccatio</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ==================== 2. HERO ==================== -->
+    <section class="hero" id="inicio" aria-labelledby="hero-titulo" data-section>
+      <!-- Formas geométricas inspiradas no símbolo "V" (CSS puro, sem imagem) -->
+      <div class="hero__mark" aria-hidden="true" data-parallax>
+        <span class="hero__mark-shape hero__mark-shape--left"></span>
+        <span class="hero__mark-shape hero__mark-shape--right"></span>
+      </div>
+
+      <div class="container hero__grid">
+
+        <div class="hero__content">
+          <h1 class="hero__title" id="hero-titulo">
+            <span class="hero__line">Arquitetura</span>
+            <span class="hero__line">estratégica para</span>
+            <span class="hero__line">estruturar novos</span>
+            <span class="hero__line">negócios</span>
+          </h1>
+
+          <p class="hero__lead">
+            A Voccatio é o elo de governança entre a visão do empreendedor e a execução operacional lucrativa.
+            Auditamos, desenhamos e validamos o modelo de negócio antes de qualquer alocação massiva de recursos.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--light" href="#contato">Falar com a Voccatio</a>
+            <a class="btn btn--ghost" href="#metodo">Conhecer o método</a>
+          </div>
+
+          <ul class="hero__pillars">
+            <li class="hero__pillar">Previsibilidade para decidir</li>
+            <li class="hero__pillar">Menos risco financeiro</li>
+            <li class="hero__pillar">Processos alinhados</li>
+          </ul>
+        </div>
+
+        <!-- Painel ilustrativo de governança (marcação + CSS, sem imagem).
+             Os níveis das barras são ilustrativos e não representam dados reais. -->
+        <div class="panel" role="img" aria-label="Ilustração de um painel de governança com plano diretor executivo, indicadores e etapas do método">
+          <div class="panel__bar">
+            <span class="panel__title">Plano diretor executivo</span>
+            <span class="panel__status">Em validação</span>
+          </div>
+
+          <ul class="panel__metrics">
+            <li class="panel__metric">
+              <span class="panel__metric-label">Previsibilidade</span>
+              <span class="meter"><i class="v-86"></i></span>
+            </li>
+            <li class="panel__metric">
+              <span class="panel__metric-label">Redução de risco financeiro</span>
+              <span class="meter"><i class="v-82"></i></span>
+            </li>
+            <li class="panel__metric">
+              <span class="panel__metric-label">Alinhamento de processos</span>
+              <span class="meter"><i class="v-91"></i></span>
+            </li>
+            <li class="panel__metric">
+              <span class="panel__metric-label">Eficiência de capital</span>
+              <span class="meter"><i class="v-84"></i></span>
+            </li>
+          </ul>
+
+          <ol class="panel__steps" data-flow-steps>
+            <li class="panel__step is-active">Auditar</li>
+            <li class="panel__step">Desenhar</li>
+            <li class="panel__step">Validar</li>
+            <li class="panel__step">Estruturar</li>
+          </ol>
+
+          <div class="panel__chip panel__chip--top">Nova unidade (BU)</div>
+          <div class="panel__chip panel__chip--bottom">Risco sob controle</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 3. FAIXA DE DISCIPLINAS ==================== -->
+    <section class="ticker" aria-label="Disciplinas que sustentam o trabalho da Voccatio">
+      <div class="ticker__track">
+        <ul class="ticker__list">
+          <li>Inteligência de mercado</li>
+          <li>Engenharia de software</li>
+          <li>Processos comerciais de alta performance</li>
+          <li>Governança executiva</li>
+          <li>Eficiência de capital</li>
+        </ul>
+        <ul class="ticker__list" aria-hidden="true">
+          <li>Inteligência de mercado</li>
+          <li>Engenharia de software</li>
+          <li>Processos comerciais de alta performance</li>
+          <li>Governança executiva</li>
+          <li>Eficiência de capital</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==================== 4. QUEM SOMOS ==================== -->
+    <section class="section" id="quem-somos" aria-labelledby="quem-somos-titulo" data-section>
+      <div class="container about">
+
+        <div class="about__heading" data-reveal>
+          <h2 class="section-title" id="quem-somos-titulo">
+            Um único centro de responsabilidade e governança executiva
+          </h2>
+        </div>
+
+        <div class="about__text d-120" data-reveal>
+          <p>
+            A Voccatio opera como uma empresa de arquitetura estratégica e estruturação de novos negócios.
+            Atuamos como o elo de governança entre a visão do empreendedor e a execução operacional lucrativa.
+          </p>
+          <p>
+            Assumimos a liderança consultiva de ponta a ponta: transformamos teses embrionárias ou gargalos
+            corporativos em um plano diretor executivo rigoroso, garantindo previsibilidade, redução de risco
+            financeiro e alinhamento de processos antes de qualquer alocação massiva de recursos.
+          </p>
+        </div>
+
+        <div class="about__media image-slot" data-reveal>
+          <img src="assets/img/banner_1200_400.png" alt="">
+          <!-- IMAGEM: foto institucional da equipe ou do ambiente de trabalho (proporção sugerida 16:9) -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 5. NÚCLEO ESTRATÉGICO ==================== -->
+    <section class="section section--mist" id="nucleo" aria-labelledby="nucleo-titulo" data-section>
+      <div class="container">
+
+        <div class="section-head" data-reveal>
+          <h2 class="section-title" id="nucleo-titulo">Núcleo estratégico: onde o negócio é auditado, desenhado e validado</h2>
+          <p class="section-lead">
+            Nosso cerne analítico combina três disciplinas para sustentar cada decisão antes que o capital seja comprometido.
+          </p>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="card" data-reveal>
+            <span class="icon-slot" aria-hidden="true"><span class="material-symbols-outlined" aria-hidden="true">query_stats</span></span>
+            <h3 class="card__title">Inteligência de mercado</h3>
+            <p class="card__text">Leitura de mercado para fundamentar o modelo de negócio e reduzir decisões baseadas em suposição.</p>
+          </article>
+
+          <article class="card d-100" data-reveal>
+            <span class="icon-slot" aria-hidden="true"><span class="material-symbols-outlined" aria-hidden="true">code</span></span>
+            <h3 class="card__title">Engenharia de software</h3>
+            <p class="card__text">Tecnologia como parte do desenho do negócio, não como etapa isolada depois que a decisão já foi tomada.</p>
+          </article>
+
+          <article class="card d-200" data-reveal>
+            <span class="icon-slot" aria-hidden="true"><span class="material-symbols-outlined" aria-hidden="true">filter_alt</span></span>
+            <h3 class="card__title">Processos comerciais de alta performance</h3>
+            <p class="card__text">Processos de venda desenhados para dar previsibilidade à receita e alinhamento à operação.</p>
+          </article>
+        </div>
+
+        <div class="outcomes" data-reveal>
+          <h3 class="outcomes__title">O que o núcleo entrega</h3>
+          <ul class="outcomes__list">
+            <li>Auditar modelos de negócio</li>
+            <li>Desenhar modelos de negócio</li>
+            <li>Validar modelos de negócio</li>
+            <li>Estruturar novas unidades (BUs)</li>
+            <!-- <li>Otimizar a eficiência de capital</li> -->
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 6. PLANO DIRETOR EXECUTIVO ==================== -->
+    <section class="section section--navy" id="plano-diretor" aria-labelledby="plano-titulo" data-section>
+      <div class="container">
+
+        <div class="section-head" data-reveal>
+          <h2 class="section-title" id="plano-titulo">Da tese ou do gargalo ao plano diretor executivo</h2>
+          <p class="section-lead">
+            Seja uma tese embrionária ou um gargalo corporativo, o ponto de partida vira um plano rigoroso que
+            garante previsibilidade, redução de risco financeiro e alinhamento de processos.
+          </p>
+        </div>
+
+        <div class="flow" data-reveal>
+          <div class="flow__inputs">
+            <div class="flow__node">Tese embrionária</div>
+            <div class="flow__node">Gargalo corporativo</div>
+          </div>
+
+          <span class="flow__link" aria-hidden="true"></span>
+
+          <div class="flow__node flow__node--core">
+            <span class="icon-slot icon-slot--light" aria-hidden="true"><span class="material-symbols-outlined" aria-hidden="true">assignment</span></span>
+            Plano diretor executivo
+          </div>
+
+          <span class="flow__link" aria-hidden="true"></span>
+
+          <div class="flow__node flow__node--result">Execução operacional lucrativa</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 7. ECOSSISTEMA ==================== -->
+    <section class="section" id="ecossistema" aria-labelledby="ecossistema-titulo" data-section>
+      <div class="container">
+
+        <div class="section-head" data-reveal>
+          <h2 class="section-title" id="ecossistema-titulo">Um ecossistema verticalmente integrado</h2>
+          <p class="section-lead">
+            A partir do núcleo estratégico, orquestramos todas as frentes necessárias para o lançamento e a maturidade da operação.
+          </p>
+        </div>
+
+        <div class="grid grid--5">
+          <article class="card card--compact" data-reveal>
+            <span class="icon-slot" aria-hidden="true"><span class="material-symbols-outlined" aria-hidden="true">deployed_code</span></span>
+            <h3 class="card__title">Fábrica de software</h3>
+            <p class="card__text">Sistemas e plataformas desenvolvidos sob a governança do plano diretor.</p>
+          </article>
+
+          <article class="card card--compact d-80" data-reveal>
+            <span class="icon-slot" aria-hidden="true"><span class="material-symbols-outlined" aria-hidden="true">language</span></span>
+            <h3 class="card__title">Desenvolvimento web</h3>
+            <p class="card__text">Presença digital construída para sustentar a operação comercial.</p>
+          </article>
+
+          <article class="card card--compact d-160" data-reveal>
+            <span class="icon-slot" aria-hidden="true"><span class="material-symbols-outlined" aria-hidden="true">palette</span></span>
+            <h3 class="card__title">Branding</h3>
+            <p class="card__text">Identidade e posicionamento alinhados ao modelo de negócio validado.</p>
+          </article>
+
+          <article class="card card--compact d-240" data-reveal>
+            <span class="icon-slot" aria-hidden="true"><span class="material-symbols-outlined" aria-hidden="true">videocam</span></span>
+            <h3 class="card__title">Produção audiovisual</h3>
+            <p class="card__text">Conteúdo audiovisual a serviço da marca e da estratégia comercial.</p>
+          </article>
+
+          <article class="card card--compact d-320" data-reveal>
+            <span class="icon-slot" aria-hidden="true"><span class="material-symbols-outlined" aria-hidden="true">campaign</span></span>
+            <h3 class="card__title">Infraestrutura de vendas e marketing</h3>
+            <p class="card__text">Estrutura comercial e de marketing pronta para operar com consistência.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 8. GOVERNANÇA (DIFERENCIAL) ==================== -->
+    <section class="section section--mist" id="governanca" aria-labelledby="governanca-titulo" data-section>
+      <div class="container">
+
+        <div class="section-head" data-reveal>
+          <h2 class="section-title" id="governanca-titulo">Em vez de prestadores fragmentados, uma única responsabilidade</h2>
+          <p class="section-lead">
+            A Voccatio gerencia diretamente o orçamento do cliente, lidera parceiros homologados e responde pela
+            integridade de cada entregável técnico e criativo.
+          </p>
+        </div>
+
+        <div class="compare">
+          <div class="compare__col" data-reveal>
+            <h3 class="compare__title">Prestadores fragmentados</h3>
+            <ul class="compare__list">
+              <li>Cada fornecedor responde apenas pela sua parte</li>
+              <li>Orçamento e parceiros ficam sob coordenação do empresário</li>
+              <li>Sem um centro único de governança executiva</li>
+            </ul>
+          </div>
+
+          <div class="compare__col compare__col--highlight d-120" data-reveal>
+            <h3 class="compare__title">Voccatio</h3>
+            <ul class="compare__list">
+              <li>Gestão direta do orçamento do cliente</li>
+              <li>Liderança de parceiros homologados</li>
+              <li>Responsabilidade pela integridade de cada entregável técnico e criativo</li>
+              <li>Um único centro de governança executiva</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 9. MÉTODO ==================== -->
+    <section class="section" id="metodo" aria-labelledby="metodo-titulo" data-section>
+      <div class="container">
+
+        <div class="section-head" data-reveal>
+          <h2 class="section-title" id="metodo-titulo">Do conceito à escala, com consistência operacional</h2>
+          <p class="section-lead">
+            Conduzimos sua ideia em etapas encadeadas, sempre com validação antes de qualquer alocação massiva de recursos.
+          </p>
+        </div>
+
+        <ol class="steps">
+          <li class="step" data-reveal>
+            <span class="step__number">01</span>
+            <h3 class="step__title">Auditar</h3>
+            <p class="step__text">Análise rigorosa da tese ou do gargalo e do modelo de negócio existente.</p>
+          </li>
+          <li class="step d-120" data-reveal>
+            <span class="step__number">02</span>
+            <h3 class="step__title">Desenhar e validar</h3>
+            <p class="step__text">Modelo de negócio desenhado e validado em um plano diretor executivo.</p>
+          </li>
+          <li class="step d-240" data-reveal>
+            <span class="step__number">03</span>
+            <h3 class="step__title">Estruturar e executar</h3>
+            <p class="step__text">Novas unidades (BUs) estruturadas e entregáveis conduzidos pelo ecossistema integrado.</p>
+          </li>
+          <li class="step d-360" data-reveal>
+            <span class="step__number">04</span>
+            <h3 class="step__title">Escalar</h3>
+            <p class="step__text">Operação em maturidade, com eficiência de capital e processos alinhados.</p>
+          </li>
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- ==================== 10. CONTATO ==================== -->
+    <section class="section section--navy contact" id="contato" aria-labelledby="contato-titulo" data-section>
+      <div class="container">
+
+        <div class="section-head" data-reveal>
+          <h2 class="section-title" id="contato-titulo">Vamos estruturar o seu negócio?</h2>
+          <p class="section-lead">
+            Conte sua tese ou o gargalo que precisa ser resolvido. A Voccatio responde com o próximo passo.
+          </p>
+        </div>
+
+        <div class="contact__grid">
+
+          <!-- Formulário: enviado ao Formspree (action). Validação e envio via fetch em script.js;
+               sem JavaScript, o navegador envia direto ao Formspree. -->
+          <form class="form" action="https://formspree.io/f/mzedvkjd" method="POST" novalidate autocomplete="on" data-contact-form data-reveal>
+            <div class="form__field">
+              <label class="form__label" for="campo-nome">Seu nome</label>
+              <input class="form__input" id="campo-nome" name="nome" type="text" autocomplete="name"
+                     placeholder="Seu nome completo" maxlength="200" required>
+              <div class="form__meta">
+                <span class="form__error" data-error-for="nome" role="alert"></span>
+                <span class="form__counter" data-counter-for="nome" aria-hidden="true">0/200</span>
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div class="form__field">
+                <label class="form__label" for="campo-whatsapp">Seu WhatsApp</label>
+                <input class="form__input" id="campo-whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel"
+                       placeholder="(47) 9 3385-3383" maxlength="20" required>
+                <span class="form__error" data-error-for="whatsapp" role="alert"></span>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="campo-email">Seu e-mail</label>
+                <input class="form__input" id="campo-email" name="email" type="email" autocomplete="email"
+                       placeholder="exemplo@email.com" maxlength="254" required>
+                <span class="form__error" data-error-for="email" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="campo-assunto">Assunto</label>
+              <input class="form__input" id="campo-assunto" name="assunto" type="text"
+                     placeholder="Ex.: Estruturação de uma nova unidade de negócio" maxlength="150" required>
+              <span class="form__error" data-error-for="assunto" role="alert"></span>
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="campo-mensagem">Sua mensagem (opcional)</label>
+              <textarea class="form__input form__input--area" id="campo-mensagem" name="mensagem" rows="4"
+                        placeholder="Conte sua tese ou o gargalo que precisa ser resolvido" maxlength="500"></textarea>
+              <div class="form__meta">
+                <span class="form__error" data-error-for="mensagem" role="alert"></span>
+                <span class="form__counter" data-counter-for="mensagem" aria-hidden="true">0/500</span>
+              </div>
+            </div>
+
+            <!-- Campo isca contra robôs: deve permanecer vazio. "_gotcha" é o nome que o Formspree
+                 reconhece e descarta no servidor, inclusive quando o JavaScript está desativado. -->
+            <input class="form__trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <button class="btn btn--light form__submit" type="submit" data-submit>Enviar mensagem</button>
+            <p class="form__status" role="status" aria-live="polite" data-form-status></p>
+          </form>
+
+          <!-- Informações de atendimento (preenchidas via SITE_CONFIG em script.js) -->
+          <div class="info d-120" data-reveal>
+
+            <div class="info__block">
+              <h3 class="info__title"><span class="material-symbols-outlined" aria-hidden="true">contact_phone</span>Canais de contato</h3>
+              <ul class="info__list">
+                <li>
+                  <span class="icon-slot icon-slot--sm icon-slot--light" aria-hidden="true"><span class="material-symbols-outlined" aria-hidden="true">call</span></span>
+                  <span class="info__label">Telefone</span>
+                  <a class="info__value" href="tel:+5547933853383" data-contact="phone">+55 (47) 9 3385-3383</a>
+                </li>
+                <li>
+                  <span class="icon-slot icon-slot--sm icon-slot--light" aria-hidden="true"><span class="material-symbols-outlined" aria-hidden="true">chat</span></span>
+                  <span class="info__label">WhatsApp</span>
+                  <a class="info__value" href="https://wa.me/5547933853383" data-contact="whatsapp">+55 (47) 9 3385-3383</a>
+                </li>
+                <li>
+                  <span class="icon-slot icon-slot--sm icon-slot--light" aria-hidden="true"><span class="material-symbols-outlined" aria-hidden="true">mail</span></span>
+                  <span class="info__label">E-mail</span>
+                  <a class="info__value" href="mailto:voccatio.brasil@gmail.com" data-contact="email">voccatio.brasil@gmail.com</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- ESPAÇO: horário de atendimento -->
+            <div class="info__block" data-business-hours>
+              <h3 class="info__title"><span class="material-symbols-outlined" aria-hidden="true">schedule</span>Horário de atendimento</h3>
+              <ul class="info__list info__list--plain" data-hours-list>
+                <li>Horário a definir</li>
+              </ul>
+            </div>
+
+            <!-- ESPAÇO: localização -->
+            <div class="info__block">
+              <h3 class="info__title"><span class="material-symbols-outlined" aria-hidden="true">location_on</span>Localização</h3>
+              <p class="info__address" data-address>Endereço a definir</p>
+              <div class="map image-slot" data-map>
+                <!-- IMAGEM / MAPA: incorporar mapa (ex.: iframe do Google Maps).
+                     Basta preencher location.mapEmbedUrl em SITE_CONFIG (script.js)
+                     que o mapa é inserido automaticamente neste espaço. -->
+              </div>
+            </div>
+
+            <!-- ESPAÇO: redes sociais -->
+            <div class="info__block">
+              <h3 class="info__title"><span class="material-symbols-outlined" aria-hidden="true">share</span>Redes sociais</h3>
+              <ul class="social">
+                <!-- <li><a class="social__link" href="#" data-social="linkedin" aria-label="LinkedIn da Voccatio"><span class="material-symbols-outlined" aria-hidden="true">work</span><span class="social__text">LinkedIn</span></a></li> -->
+                <li><a class="social__link" href="#" data-social="instagram" aria-label="Instagram da Voccatio"><span class="material-symbols-outlined" aria-hidden="true">photo_camera</span><span class="social__text">Instagram</span></a></li>
+                <li><a class="social__link" href="#" data-social="youtube" aria-label="YouTube da Voccatio"><span class="material-symbols-outlined" aria-hidden="true">smart_display</span><span class="social__text">YouTube</span></a></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== 11. RODAPÉ ==================== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+
+      <div class="site-footer__brand">
+        <a class="brand" href="#inicio" aria-label="Voccatio Tech — voltar ao início">
+          <img src="assets/img/logo_800_150.png" alt="Logo" >
+          <!-- IMAGEM: logotipo da Voccatio Tech em versão clara (para fundo escuro) -->
+          <!-- <span class="brand__name">Voccatio</span>
+          <span class="brand__tag">Tech</span> -->
+        </a>
+        <p class="site-footer__slogan">Arquitetura estratégica e estruturação de novos negócios.</p>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Navegação do rodapé">
+        <ul class="site-footer__list">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#quem-somos">Quem somos</a></li>
+          <li><a href="#nucleo">Núcleo estratégico</a></li>
+          <li><a href="#ecossistema">Ecossistema</a></li>
+          <li><a href="#metodo">Método</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botão de login: leva à futura página interna da empresa.
+           Defina a URL em SITE_CONFIG.internalAreaUrl (script.js). -->
+      <div class="site-footer__access">
+        <a class="btn btn--outline" href="#" data-internal-login>
+          <span class="material-symbols-outlined" aria-hidden="true">lock</span>
+          Login
+        </a>
+      </div>
+
+    </div>
+
+    <div class="container site-footer__bottom">
+      <p>© <span data-year>2026</span> Voccatio. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Aviso rápido (usado pelo script.js) -->
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
