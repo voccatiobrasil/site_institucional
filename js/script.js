@@ -35,7 +35,7 @@
     contacts: {
       phone: '+55 (47) 9 3385-3383',
       whatsapp: '+55 (47) 9 3385-3383',
-      email: 'voccatio.brasil@gmail.com'
+      email: 'contato@voccatio.com.br'
     },
 
     // Cada item vira uma linha em "Horário de atendimento".
