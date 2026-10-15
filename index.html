@@ -1,36 +1,8 @@
 <!DOCTYPE html>
-<!--
-  ============================================================
-  VOCCATIO TECH — SITE INSTITUCIONAL
-  ============================================================
-  ESTRUTURA DESTE ARQUIVO (somente marcação / conteúdo):
-    1. Cabeçalho + navegação
-    2. Hero (proposta de valor)
-    3. Faixa de disciplinas (marquee)
-    4. Quem somos
-    5. Núcleo estratégico
-    6. Plano diretor executivo
-    7. Ecossistema verticalmente integrado
-    8. Governança (diferencial)
-    9. Método (do conceito à escala)
-   10. Contato (formulário, canais, horário, localização, redes)
-   11. Rodapé (com botão de login para a área interna)
-
-  ONDE EDITAR DADOS REAIS (telefone, e-mail, horário, endereço,
-  redes sociais, link do login): objeto SITE_CONFIG em script.js.
-
-  CONVENÇÕES DE COMENTÁRIOS:
-     IMAGEM: ...   -> local onde inserir uma imagem
-     ÍCONE:  ...   -> local onde inserir um ícone
-  ============================================================
--->
 <html lang="pt-BR">
 <head>
   <meta name="google-site-verification" content="BAlSic9m4IldRZZMMzft1umHxeAKR73MOv-zKihvQIk" />
   <meta charset="UTF-8">
-  <!-- SEGURANÇA: Content-Security-Policy. Bloqueia scripts/estilos inline e qualquer
-       origem não listada. O ideal é também enviá-la como cabeçalho HTTP (ver _headers,
-       .htaccess ou nginx-security.conf), onde frame-ancestors também funciona. -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formspree.io; frame-src https://www.google.com; form-action https://formspree.io; base-uri 'none'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="format-detection" content="telephone=no">
@@ -39,12 +11,9 @@
   <meta name="description" content="A Voccatio é o elo de governança entre a visão do empreendedor e a execução operacional lucrativa: auditamos, desenhamos e validamos modelos de negócio e estruturamos novas unidades.">
   <meta name="theme-color" content="#1B3A63">
 
-  <!-- ÍCONE: favicon do site (ex.: <link rel="icon" href="assets/favicon.png">) -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" referrerpolicy="no-referrer">
-  <!-- Ícones: Google Material Symbols (https://fonts.google.com/icons) -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block" rel="stylesheet" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/svg+xml" href="assets/icon/Voccatio.svg">
@@ -56,12 +25,11 @@
   <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
   <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
 
-  <!-- ==================== 1. CABEÇALHO ==================== -->
+  <!-- Cabeçalho -->
   <header class="site-header" data-header>
     <div class="container site-header__inner">
 
       <a class="brand" href="#inicio" aria-label="Voccatio Tech — ir para o início">
-        <!-- IMAGEM: logotipo da Voccatio Tech (versão horizontal ou símbolo "V") -->
         <img class="logo_top" src="assets/img/logo_800_150.png" alt="Voccatio Tech" width="800" height="150">
       </a>
 
@@ -87,9 +55,8 @@
 
   <main id="conteudo">
 
-    <!-- ==================== 2. HERO ==================== -->
+    <!-- Hero -->
     <section class="hero" id="inicio" aria-labelledby="hero-titulo" data-section>
-      <!-- Formas geométricas inspiradas no símbolo "V" (CSS puro, sem imagem) -->
       <div class="hero__mark" aria-hidden="true" data-parallax>
         <span class="hero__mark-shape hero__mark-shape--left"></span>
         <span class="hero__mark-shape hero__mark-shape--right"></span>
@@ -122,8 +89,7 @@
           </ul>
         </div>
 
-        <!-- Painel ilustrativo de governança (marcação + CSS, sem imagem).
-             Os níveis das barras são ilustrativos e não representam dados reais. -->
+        <!-- Painel ilustrativo: os níveis das barras não representam dados reais -->
         <div class="panel" role="img" aria-label="Ilustração de um painel de governança com plano diretor executivo, indicadores e etapas do método">
           <div class="panel__bar">
             <span class="panel__title">Plano diretor executivo</span>
@@ -163,7 +129,7 @@
       </div>
     </section>
 
-    <!-- ==================== 3. FAIXA DE DISCIPLINAS ==================== -->
+    <!-- Faixa de disciplinas -->
     <section class="ticker" aria-label="Disciplinas que sustentam o trabalho da Voccatio">
       <div class="ticker__track">
         <ul class="ticker__list">
@@ -183,7 +149,7 @@
       </div>
     </section>
 
-    <!-- ==================== 4. QUEM SOMOS ==================== -->
+    <!-- Quem somos -->
     <section class="section" id="quem-somos" aria-labelledby="quem-somos-titulo" data-section>
       <div class="container about">
 
@@ -207,13 +173,12 @@
 
         <div class="about__media image-slot" data-reveal>
           <img src="assets/img/banner_1200_400.png" alt="">
-          <!-- IMAGEM: foto institucional da equipe ou do ambiente de trabalho (proporção sugerida 16:9) -->
         </div>
 
       </div>
     </section>
 
-    <!-- ==================== 5. NÚCLEO ESTRATÉGICO ==================== -->
+    <!-- Núcleo estratégico -->
     <section class="section section--mist" id="nucleo" aria-labelledby="nucleo-titulo" data-section>
       <div class="container">
 
@@ -258,7 +223,7 @@
       </div>
     </section>
 
-    <!-- ==================== 6. PLANO DIRETOR EXECUTIVO ==================== -->
+    <!-- Plano diretor executivo -->
     <section class="section section--navy" id="plano-diretor" aria-labelledby="plano-titulo" data-section>
       <div class="container">
 
@@ -291,7 +256,7 @@
       </div>
     </section>
 
-    <!-- ==================== 7. ECOSSISTEMA ==================== -->
+    <!-- Ecossistema -->
     <section class="section" id="ecossistema" aria-labelledby="ecossistema-titulo" data-section>
       <div class="container">
 
@@ -337,7 +302,7 @@
       </div>
     </section>
 
-    <!-- ==================== 8. GOVERNANÇA (DIFERENCIAL) ==================== -->
+    <!-- Governança -->
     <section class="section section--mist" id="governanca" aria-labelledby="governanca-titulo" data-section>
       <div class="container">
 
@@ -373,7 +338,7 @@
       </div>
     </section>
 
-    <!-- ==================== 9. MÉTODO ==================== -->
+    <!-- Método -->
     <section class="section" id="metodo" aria-labelledby="metodo-titulo" data-section>
       <div class="container">
 
@@ -410,7 +375,7 @@
       </div>
     </section>
 
-    <!-- ==================== 10. CONTATO ==================== -->
+    <!-- Contato -->
     <section class="section section--navy contact" id="contato" aria-labelledby="contato-titulo" data-section>
       <div class="container">
 
@@ -423,8 +388,7 @@
 
         <div class="contact__grid">
 
-          <!-- Formulário: enviado ao Formspree (action). Validação e envio via fetch em script.js;
-               sem JavaScript, o navegador envia direto ao Formspree. -->
+          <!-- Enviado ao Formspree; sem JavaScript, o navegador envia direto -->
           <form class="form" action="https://formspree.io/f/mzedvkjd" method="POST" novalidate autocomplete="on" data-contact-form data-reveal>
             <div class="form__field">
               <label class="form__label" for="campo-nome">Seu nome</label>
@@ -468,15 +432,13 @@
               </div>
             </div>
 
-            <!-- Campo isca contra robôs: deve permanecer vazio. "_gotcha" é o nome que o Formspree
-                 reconhece e descarta no servidor, inclusive quando o JavaScript está desativado. -->
+            <!-- Campo isca anti-robô: deve permanecer vazio -->
             <input class="form__trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
 
             <button class="btn btn--light form__submit" type="submit" data-submit>Enviar mensagem</button>
             <p class="form__status" role="status" aria-live="polite" data-form-status></p>
           </form>
 
-          <!-- Informações de atendimento (preenchidas via SITE_CONFIG em script.js) -->
           <div class="info d-120" data-reveal>
 
             <div class="info__block">
@@ -500,7 +462,6 @@
               </ul>
             </div>
 
-            <!-- ESPAÇO: horário de atendimento -->
             <div class="info__block" data-business-hours>
               <h3 class="info__title"><span class="material-symbols-outlined" aria-hidden="true">schedule</span>Horário de atendimento</h3>
               <ul class="info__list info__list--plain" data-hours-list>
@@ -508,18 +469,13 @@
               </ul>
             </div>
 
-            <!-- ESPAÇO: localização -->
             <div class="info__block">
               <h3 class="info__title"><span class="material-symbols-outlined" aria-hidden="true">location_on</span>Localização</h3>
               <p class="info__address" data-address>Endereço a definir</p>
               <div class="map image-slot" data-map>
-                <!-- IMAGEM / MAPA: incorporar mapa (ex.: iframe do Google Maps).
-                     Basta preencher location.mapEmbedUrl em SITE_CONFIG (script.js)
-                     que o mapa é inserido automaticamente neste espaço. -->
               </div>
             </div>
 
-            <!-- ESPAÇO: redes sociais -->
             <div class="info__block">
               <h3 class="info__title"><span class="material-symbols-outlined" aria-hidden="true">share</span>Redes sociais</h3>
               <ul class="social">
@@ -537,16 +493,13 @@
 
   </main>
 
-  <!-- ==================== 11. RODAPÉ ==================== -->
+  <!-- Rodapé -->
   <footer class="site-footer">
     <div class="container site-footer__inner">
 
       <div class="site-footer__brand">
         <a class="brand" href="#inicio" aria-label="Voccatio Tech — voltar ao início">
           <img src="assets/img/logo_800_150.png" alt="Logo" >
-          <!-- IMAGEM: logotipo da Voccatio Tech em versão clara (para fundo escuro) -->
-          <!-- <span class="brand__name">Voccatio</span>
-          <span class="brand__tag">Tech</span> -->
         </a>
         <p class="site-footer__slogan">Arquitetura estratégica e estruturação de novos negócios.</p>
       </div>
@@ -562,8 +515,7 @@
         </ul>
       </nav>
 
-      <!-- Botão de login: leva à futura página interna da empresa.
-           Defina a URL em SITE_CONFIG.internalAreaUrl (script.js). -->
+      <!-- Login: a URL é definida em SITE_CONFIG.internalAreaUrl (script.js) -->
       <div class="site-footer__access">
         <a class="btn btn--outline" href="#" data-internal-login>
           <span class="material-symbols-outlined" aria-hidden="true">lock</span>
@@ -578,7 +530,7 @@
     </div>
   </footer>
 
-  <!-- Aviso rápido (usado pelo script.js) -->
+  <!-- Toast -->
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
   <script src="js/script.js"></script>
