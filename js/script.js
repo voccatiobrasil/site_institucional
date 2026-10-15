@@ -1,36 +1,14 @@
-/* ==========================================================================
-   VOCCATIO TECH — LÓGICA DO SITE
-   ==========================================================================
-   ÍNDICE
-     1. Configuração do site (EDITE AQUI os dados reais da empresa)
-     2. Utilitários (inclui validação de URLs e sanitização de texto)
-     3. Módulos de interface (cabeçalho, menu, animações, painel)
-     4. Módulos de conteúdo (contatos, horário, mapa, redes, ano)
-     5. Módulo de formulário (validação e envio)
-     6. Módulo de acesso à área interna (login)
-     7. Inicialização
-   ========================================================================== */
-
 (function () {
   'use strict';
 
-  /* ========================================================================
-     0. PROTEÇÃO CONTRA CLICKJACKING (reforço)
-     O bloqueio definitivo é o cabeçalho HTTP "frame-ancestors 'none'"
-     (ver _headers / .htaccess / nginx-security.conf). Este trecho é o plano B
-     para quando o site for servido sem esses cabeçalhos.
-     ======================================================================== */
+  // Reforço contra clickjacking; o bloqueio principal é o cabeçalho HTTP frame-ancestors.
   if (window.top !== window.self) {
     try { window.top.location = window.self.location; } catch (e) { /* bloqueado */ }
     document.documentElement.style.display = 'none';
     return;
   }
 
-  /* ========================================================================
-     1. CONFIGURAÇÃO DO SITE
-     Único lugar para trocar telefone, e-mail, horário, endereço, redes
-     sociais e o link do login. Campos vazios mantêm o texto provisório.
-     ======================================================================== */
+  // Dados editáveis do site: contatos, horário, endereço, redes sociais e login.
   const SITE_CONFIG = deepFreeze({
     contacts: {
       phone: '+55 (47) 9 3385-3383',
@@ -38,32 +16,25 @@
       email: 'contato@voccatio.com.br'
     },
 
-    // Cada item vira uma linha em "Horário de atendimento".
     businessHours: [
-      // { days: 'Segunda a sexta', hours: '08h às 18h' }
       { days: 'Segunda a sexta', hours: '08h às 18h' }
     ],
 
     location: {
-      address: 'Maringá - PR',      // Ex.: 'Rua Exemplo, 123 — Cidade / UF'
+      address: 'Maringá - PR',
       mapEmbedUrl: "https://www.google.com/maps?q=Maring%C3%A1%2C%20PR&output=embed"
-      // URL "src" do iframe do Google Maps (Compartilhar > Incorporar)
     },
 
     social: {
-      linkedin: '',     // URL completa do perfil
+      linkedin: '',
       instagram: 'https://www.instagram.com/voccatio/',
       youtube: 'https://www.youtube.com/@Voccatio'
     },
 
-    // Página interna futura. Enquanto vazio, o botão Login exibe um aviso.
+    // Enquanto vazio, o botão Login exibe um aviso.
     internalAreaUrl: ''
-
-    // O formulário de contato é enviado ao Formspree: o endereço fica no
-    // atributo action do <form> em index.html.
   });
 
-  /** Congela o objeto (e os filhos) para que não seja alterado em tempo de execução. */
   function deepFreeze(object) {
     Object.values(object).forEach((value) => {
       if (value && typeof value === 'object') deepFreeze(value);
@@ -71,9 +42,7 @@
     return Object.freeze(object);
   }
 
-  /* Hosts permitidos para cada tipo de link vindo do SITE_CONFIG.
-     Qualquer URL fora desta lista é ignorada (protege contra javascript:, data:
-     e redirecionamentos para domínios inesperados caso o config seja editado errado). */
+  // Hosts permitidos por tipo de link; URLs fora da lista são ignoradas.
   const ALLOWED_SOCIAL_HOSTS = {
     linkedin:  ['linkedin.com', 'www.linkedin.com', 'br.linkedin.com'],
     instagram: ['instagram.com', 'www.instagram.com'],
@@ -95,17 +64,12 @@
     tooLong: (max) => `Use no máximo ${max} caracteres.`
   };
 
-
-  /* ========================================================================
-     2. UTILITÁRIOS
-     ======================================================================== */
   const $  = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
 
   const prefersReducedMotion = () =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /** Executa `callback` no máximo uma vez por frame de animação. */
   function onFrame(callback) {
     let scheduled = false;
     return function (...args) {
@@ -120,14 +84,9 @@
 
   const EMAIL_PATTERN = /^[^\s@<>"'()\\,;:]+@[^\s@<>"'()\\,;:]+\.[^\s@<>"'()\\,;:]{2,}$/;
 
-  /** Remove tudo que não for número (para montar links tel: e wa.me). */
   const digitsOnly = (value) => String(value).replace(/\D/g, '');
 
-  /**
-   * Valida uma URL e devolve a versão normalizada, ou '' se for insegura.
-   * Só aceita https: e, se `allowedHosts` for informado, apenas esses domínios.
-   * Isso barra javascript:, data:, vbscript: e afins.
-   */
+  // Aceita apenas https e, se informado, hosts permitidos; barra javascript:, data: e afins.
   function safeHttpsUrl(value, allowedHosts) {
     try {
       const url = new URL(String(value).trim());
@@ -140,18 +99,13 @@
     }
   }
 
-  /** Aceita https:// externo OU caminho relativo do próprio site (ex.: /area-interna/). */
   function safeInternalUrl(value) {
     const text = String(value).trim();
-    if (/^\/(?![/\\])[\w\-./?=&%#]*$/.test(text)) return text; // caminho local
+    if (/^\/(?![/\\])[\w\-./?=&%#]*$/.test(text)) return text;
     return safeHttpsUrl(text);
   }
 
-  /**
-   * Higieniza texto digitado: normaliza Unicode, remove caracteres de controle,
-   * invisíveis e de direção de texto (usados para disfarçar conteúdo) e apara.
-   * Mantém quebras de linha (\n) e acentos normalmente.
-   */
+  // Remove caracteres de controle, invisíveis e de direção de texto.
   function sanitizeText(value) {
     return String(value)
       .normalize('NFC')
@@ -171,12 +125,6 @@
     toastTimer = window.setTimeout(() => toast.classList.remove('is-visible'), 3500);
   }
 
-
-  /* ========================================================================
-     3. MÓDULOS DE INTERFACE
-     ======================================================================== */
-
-  /** Cabeçalho ganha fundo ao rolar e a barra de progresso acompanha a leitura. */
   function initHeaderAndProgress() {
     const header = $('[data-header]');
     const progressBar = $('[data-scroll-progress]');
@@ -195,7 +143,6 @@
     update();
   }
 
-  /** Menu móvel: abre/fecha e se fecha ao escolher um link ou apertar Esc. */
   function initMobileMenu() {
     const toggle = $('[data-nav-toggle]');
     const nav = $('[data-nav]');
@@ -218,7 +165,6 @@
     });
   }
 
-  /** Revela elementos [data-reveal] quando entram na área visível. */
   function initScrollReveal() {
     const items = $$('[data-reveal]');
     if (!items.length) return;
@@ -239,7 +185,6 @@
     items.forEach((item) => observer.observe(item));
   }
 
-  /** Destaca no menu a seção que está sendo lida. */
   function initActiveNavigation() {
     const links = $$('.main-nav__link');
     const sections = $$('[data-section]');
@@ -259,7 +204,6 @@
     sections.forEach((section) => observer.observe(section));
   }
 
-  /** Parallax leve nas formas do "V" do hero. */
   function initHeroParallax() {
     const mark = $('[data-parallax]');
     if (!mark || prefersReducedMotion()) return;
@@ -272,7 +216,6 @@
     window.addEventListener('scroll', update, { passive: true });
   }
 
-  /** Alterna a etapa ativa do painel (Auditar > Desenhar > Validar > Estruturar). */
   function initPanelSteps() {
     const container = $('[data-flow-steps]');
     if (!container || prefersReducedMotion()) return;
@@ -287,14 +230,7 @@
     }, 1800);
   }
 
-
-  /* ========================================================================
-     4. MÓDULOS DE CONTEÚDO (alimentados por SITE_CONFIG)
-     ======================================================================== */
-
-  /** Telefone, WhatsApp e e-mail: preenche texto e link. */
   function initContactChannels() {
-    // Cada builder devolve null se o valor for inválido (o link fica inativo).
     const phoneHref = (value, prefix) => {
       const digits = digitsOnly(value);
       return digits.length >= 10 && digits.length <= 15 ? `${prefix}${digits}` : '';
@@ -328,7 +264,6 @@
     });
   }
 
-  /** Horário de atendimento: monta a lista a partir de businessHours. */
   function initBusinessHours() {
     const list = $('[data-hours-list]');
     if (!list || !SITE_CONFIG.businessHours.length) return;
@@ -340,7 +275,6 @@
     }));
   }
 
-  /** Endereço e mapa incorporado. */
   function initLocation() {
     const { address, mapEmbedUrl } = SITE_CONFIG.location;
     const addressElement = $('[data-address]');
@@ -355,8 +289,7 @@
       frame.src = mapUrl;
       frame.title = 'Mapa com a localização da Voccatio';
       frame.loading = 'lazy';
-      // Sandbox: o mapa roda isolado, sem poder navegar a página, abrir
-      // formulários, pop-ups ou acessar recursos do site.
+      // Sandbox: o mapa roda isolado do restante do site.
       frame.setAttribute('sandbox', 'allow-scripts allow-same-origin');
       frame.referrerPolicy = 'strict-origin-when-cross-origin';
       frame.setAttribute('allow', '');
@@ -364,7 +297,6 @@
     }
   }
 
-  /** Links das redes sociais. Sem URL definida, o link fica inativo. */
   function initSocialLinks() {
     $$('[data-social]').forEach((link) => {
       const network = link.dataset.social;
@@ -381,32 +313,21 @@
     });
   }
 
-  /** Ano atual no rodapé. */
   function initFooterYear() {
     const target = $('[data-year]');
     if (target) target.textContent = String(new Date().getFullYear());
   }
 
-
-  /* ========================================================================
-     5. MÓDULO DE FORMULÁRIO
-     Limites de caracteres: definidos pelo atributo maxlength de cada campo
-     em index.html (nome 200, e-mail 254, assunto 150, mensagem 500).
-     O script lê esse valor, então basta alterar o HTML para mudar o limite.
-     ======================================================================== */
+  // Os limites de caracteres vêm do atributo maxlength de cada campo no HTML.
 
   const PHONE_DIGITS = 11; // DDD (2) + 9 + número (8)
 
-  // Proteções contra abuso do envio (reforço: o limite real fica no Formspree).
-  const SUBMIT_TIMEOUT_MS = 15000;   // tempo máximo de espera pela resposta
-  const MIN_FILL_TIME_MS  = 3000;    // robôs preenchem em milissegundos
-  const SUBMIT_COOLDOWN_MS = 30000;  // intervalo mínimo entre dois envios
+  // Proteções contra abuso do envio (o limite real fica no Formspree).
+  const SUBMIT_TIMEOUT_MS = 15000;
+  const MIN_FILL_TIME_MS = 3000;
+  const SUBMIT_COOLDOWN_MS = 30000;
   const MAX_SUBMITS_PER_SESSION = 5;
 
-  /**
-   * Formata um telefone brasileiro enquanto a pessoa digita:
-   * (47) 9 3385-3383. Ao colar, remove o código do país (55) se houver.
-   */
   function formatBrazilianPhone(rawValue, isPaste = false) {
     let digits = digitsOnly(rawValue);
 
@@ -423,14 +344,12 @@
     return formatted;
   }
 
-  /** Valida um texto simples: obrigatório (ou não) e dentro do limite. */
   function validateText(value, maxLength, isRequired) {
     const text = sanitizeText(value);
     if (!text) return isRequired ? TEXT.required : '';
     return maxLength > 0 && text.length > maxLength ? TEXT.tooLong(maxLength) : '';
   }
 
-  /** Regras de validação por campo. Retorna a mensagem de erro ou ''. */
   const validators = {
     nome:     (value, field) => validateText(value, field.maxLength, true),
     assunto:  (value, field) => validateText(value, field.maxLength, true),
@@ -458,7 +377,6 @@
     if (output) output.textContent = message;
   }
 
-  /** Valida um campo e mostra o erro. Retorna true se estiver correto. */
   function validateField(form, name) {
     const field = form.elements[name];
     const message = validators[name](field.value, field);
@@ -466,14 +384,12 @@
     return !message;
   }
 
-  /** Valida todos os campos; foca o primeiro com erro. */
   function validateForm(form) {
     const invalidNames = Object.keys(validators).filter((name) => !validateField(form, name));
     if (invalidNames.length) form.elements[invalidNames[0]].focus();
     return invalidNames.length === 0;
   }
 
-  /** Aplica a máscara de telefone ao campo de WhatsApp. */
   function initPhoneMask(form) {
     const phoneField = form.elements.whatsapp;
     if (!phoneField) return;
@@ -484,7 +400,6 @@
     });
   }
 
-  /** Contadores "0/200" e "0/500" dos campos com limite de caracteres. */
   function initCharCounters(form) {
     const counters = $$('[data-counter-for]', form);
     if (!counters.length) return;
@@ -503,16 +418,13 @@
     update();
   }
 
-  /**
-   * Envia os dados ao Formspree (endereço vem do atributo action do formulário).
-   * Sem endereço definido, simula o envio.
-   */
+  // Sem endpoint definido, o envio é simulado.
   async function sendContactMessage(endpoint, payload) {
     if (!endpoint) {
       return new Promise((resolve) => window.setTimeout(resolve, 900));
     }
 
-    // Só envia para o endereço esperado do Formspree (reforço da CSP).
+    // Só envia para o endpoint esperado do Formspree.
     if (!FORM_ENDPOINT_PATTERN.test(endpoint)) throw new Error('Endpoint inválido');
 
     // Timeout: evita o botão ficar travado se a rede não responder.
@@ -528,10 +440,10 @@
         },
         body: JSON.stringify(payload),
         mode: 'cors',
-        credentials: 'omit',            // nunca envia cookies
+        credentials: 'omit',
         cache: 'no-store',
         referrerPolicy: 'strict-origin-when-cross-origin',
-        redirect: 'error',              // não segue redirecionamentos inesperados
+        redirect: 'error',
         signal: controller.signal
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -548,11 +460,7 @@
     status.classList.toggle('is-error', type === 'error');
   }
 
-  /**
-   * Monta o conteúdo enviado: SOMENTE os campos conhecidos (lista fechada),
-   * higienizados e truncados no limite de cada campo. Qualquer campo extra
-   * injetado no DOM é descartado.
-   */
+  // Envia somente os campos conhecidos, higienizados e limitados ao maxlength.
   function buildPayload(form) {
     const payload = {};
     Object.keys(validators).forEach((name) => {
@@ -565,14 +473,12 @@
     return payload;
   }
 
-  /** Limite de envios por sessão e intervalo entre envios (em memória + sessionStorage). */
   const submitGuard = (() => {
     let lastSubmit = 0;
     let count = 0;
     try { count = Number(window.sessionStorage.getItem('voccatio_submits')) || 0; } catch (e) { /* storage bloqueado */ }
 
     return {
-      /** Retorna '' se pode enviar, ou a mensagem a exibir. */
       check() {
         if (count >= MAX_SUBMITS_PER_SESSION) return TEXT.rateLimited;
         if (Date.now() - lastSubmit < SUBMIT_COOLDOWN_MS) return TEXT.rateLimited;
@@ -581,7 +487,7 @@
       register() {
         lastSubmit = Date.now();
         count += 1;
-        try { window.sessionStorage.setItem('voccatio_submits', String(count)); } catch (e) { /* ignorar */ }
+        try { window.sessionStorage.setItem('voccatio_submits', String(count)); } catch (e) { /* storage bloqueado */ }
       }
     };
   })();
@@ -592,18 +498,16 @@
 
     const submitButton = $('[data-submit]', form);
     const endpoint = form.getAttribute('action');
-    const renderedAt = Date.now(); // para medir o tempo de preenchimento
+    const renderedAt = Date.now();
 
     initPhoneMask(form);
     initCharCounters(form);
 
-    // Limpa o erro de um campo assim que a pessoa volta a digitar.
     form.addEventListener('input', (event) => {
       const name = event.target.name;
       if (validators[name]) setFieldError(form, name, '');
     });
 
-    // Valida ao sair do campo (somente se algo foi digitado).
     form.addEventListener('focusout', (event) => {
       const name = event.target.name;
       if (validators[name] && event.target.value.trim()) validateField(form, name);
@@ -640,10 +544,6 @@
     });
   }
 
-
-  /* ========================================================================
-     6. ACESSO À ÁREA INTERNA (LOGIN)
-     ======================================================================== */
   function initInternalLogin() {
     const button = $('[data-internal-login]');
     if (!button) return;
@@ -662,14 +562,9 @@
     });
   }
 
-
-  /* ========================================================================
-     7. INICIALIZAÇÃO
-     ======================================================================== */
   function init() {
     document.documentElement.classList.add('js-ready');
 
-    // Interface
     initHeaderAndProgress();
     initMobileMenu();
     initScrollReveal();
@@ -677,14 +572,12 @@
     initHeroParallax();
     initPanelSteps();
 
-    // Conteúdo
     initContactChannels();
     initBusinessHours();
     initLocation();
     initSocialLinks();
     initFooterYear();
 
-    // Formulário e acesso interno
     initContactForm();
     initInternalLogin();
   }
